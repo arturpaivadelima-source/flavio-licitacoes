@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flávio Lima Advogados — Licitações em MG</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --azul: #1d3461;
+      --verde: #5a8a6d;
+      --verde-hover: #4a7a5d;
+      --branco: #ffffff;
+      --cinza-claro: #f5f6fa;
+      --cinza-texto: #444;
+    }
+
+    body { font-family: 'Raleway', sans-serif; color: var(--cinza-texto); }
+
+    /* NAV */
+    nav {
+      background: var(--azul);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 70px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    nav .logo img { height: 44px; object-fit: contain; }
+    nav ul { list-style: none; display: flex; gap: 32px; }
+    nav ul li a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    nav ul li a:hover, nav ul li a.active { color: var(--branco); }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, var(--azul) 60%, #254a8a 100%);
+      color: var(--branco);
+      padding: 110px 5% 90px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.2;
+      max-width: 780px;
+      margin: 0 auto 20px;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      max-width: 580px;
+      margin: 0 auto 40px;
+      opacity: 0.85;
+      line-height: 1.7;
+    }
+    .btn-verde {
+      display: inline-block;
+      background: var(--verde);
+      color: var(--branco);
+      padding: 16px 40px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-verde:hover { background: var(--verde-hover); transform: translateY(-2px); }
+
+    /* DIFERENCIAIS */
+    .diferenciais {
+      background: var(--cinza-claro);
+      padding: 80px 5%;
+      text-align: center;
+    }
+    .diferenciais h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--azul);
+      margin-bottom: 12px;
+    }
+    .diferenciais .subtitulo {
+      color: #666;
+      font-size: 1rem;
+      margin-bottom: 52px;
+    }
+    .cards-diferenciais {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .card-dif {
+      background: var(--branco);
+      border-radius: 8px;
+      padding: 40px 28px;
+      box-shadow: 0 2px 16px rgba(29,52,97,0.08);
+      border-top: 4px solid var(--verde);
+    }
+    .card-dif .icone {
+      font-size: 2.4rem;
+      margin-bottom: 18px;
+    }
+    .card-dif h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--azul);
+      margin-bottom: 10px;
+    }
+    .card-dif p { font-size: 0.9rem; line-height: 1.65; color: #555; }
+
+    /* SOBRE */
+    .sobre {
+      padding: 80px 5%;
+      display: flex;
+      gap: 60px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .sobre-texto { flex: 1; }
+    .sobre-texto h2 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--azul);
+      margin-bottom: 20px;
+    }
+    .sobre-texto p {
+      font-size: 0.97rem;
+      line-height: 1.8;
+      color: #555;
+      margin-bottom: 14px;
+    }
+    .sobre-barra {
+      width: 60px;
+      height: 4px;
+      background: var(--verde);
+      margin-bottom: 24px;
+      border-radius: 2px;
+    }
+    .sobre-destaque {
+      background: var(--azul);
+      color: var(--branco);
+      border-radius: 8px;
+      padding: 40px 36px;
+      flex: 0 0 300px;
+      text-align: center;
+    }
+    .sobre-destaque .num {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--verde);
+      display: block;
+    }
+    .sobre-destaque .label { font-size: 0.85rem; opacity: 0.8; margin-top: 4px; }
+    .sobre-destaque hr { border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 20px 0; }
+
+    /* CONTATO */
+    .contato {
+      background: var(--cinza-claro);
+      padding: 80px 5%;
+      text-align: center;
+    }
+    .contato h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--azul);
+      margin-bottom: 10px;
+    }
+    .contato .subtitulo { color: #666; margin-bottom: 48px; }
+    .contato-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .form-grupo { margin-bottom: 18px; }
+    .form-grupo label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--azul);
+      margin-bottom: 6px;
+      letter-spacing: 0.03em;
+    }
+    .form-grupo input,
+    .form-grupo textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid #ddd;
+      border-radius: 4px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-grupo input:focus,
+    .form-grupo textarea:focus { border-color: var(--verde); }
+    .form-grupo textarea { height: 120px; resize: vertical; }
+    .btn-form {
+      width: 100%;
+      padding: 14px;
+      background: var(--azul);
+      color: var(--branco);
+      border: none;
+      border-radius: 4px;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-form:hover { background: #16295a; }
+    .contato-info { display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+    .info-item { display: flex; align-items: flex-start; gap: 14px; }
+    .info-item .ico {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .info-item strong { display: block; color: var(--azul); font-size: 0.9rem; margin-bottom: 2px; }
+    .info-item span { font-size: 0.95rem; color: #555; }
+    .btn-whatsapp {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: var(--branco);
+      padding: 14px 24px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+      margin-top: 8px;
+    }
+    .btn-whatsapp:hover { background: #1ebe5d; }
+
+    /* FOOTER */
+    footer {
+      background: var(--azul);
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 28px 5%;
+      font-size: 0.85rem;
+    }
+    footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    footer strong { color: var(--branco); }
+
+    /* MENSAGEM SUCESSO */
+    .msg-sucesso {
+      display: none;
+      background: #e8f5e9;
+      border: 1px solid var(--verde);
+      color: #2e7d32;
+      padding: 14px;
+      border-radius: 4px;
+      text-align: center;
+      font-weight: 600;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 700px) {
+      nav ul { gap: 16px; }
+      .sobre { flex-direction: column; }
+      .sobre-destaque { flex: 0 0 auto; width: 100%; }
+      .contato-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <a href="index.html">
+      <img src="https://static.wixstatic.com/media/0e38b4_25950fa63a214ece99b1c33430a62aa0~mv2.png" alt="Flávio Lima Advogados" />
+    </a>
+  </div>
+  <ul>
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="licitacoes.html">Licitações</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Encontre editais de obras e engenharia em MG</h1>
+  <p>Assessoria jurídica especializada em licitações públicas para o setor de construção civil em Minas Gerais.</p>
+  <a href="licitacoes.html" class="btn-verde">Ver Editais Abertos</a>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section class="diferenciais">
+  <h2>Por que escolher a Flávio Lima Advogados?</h2>
+  <p class="subtitulo">Especialistas em direito administrativo e captação de contratos públicos em MG</p>
+  <div class="cards-diferenciais">
+    <div class="card-dif">
+      <div class="icone">📡</div>
+      <h3>Monitoramento Diário de Editais</h3>
+      <p>Acompanhamos em tempo real o PNCP e portais de licitação, filtrando obras, reformas e engenharia em Minas Gerais.</p>
+    </div>
+    <div class="card-dif">
+      <div class="icone">⚖️</div>
+      <h3>Análise Jurídica Completa</h3>
+      <p>Revisamos editais, identificamos riscos, elaboramos recursos e garantimos que sua proposta esteja em plena conformidade legal.</p>
+    </div>
+    <div class="card-dif">
+      <div class="icone">📍</div>
+      <h3>Suporte em Todo MG</h3>
+      <p>Atendemos empresas de construção e engenharia em todos os municípios de Minas Gerais, presencialmente ou de forma remota.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="sobre">
+  <div class="sobre-texto">
+    <div class="sobre-barra"></div>
+    <h2>Autoridade jurídica em licitações públicas</h2>
+    <p>O escritório Flávio Lima Advogados Associados é especializado em direito administrativo, com foco em licitações e contratos públicos para o setor de obras e engenharia em Minas Gerais.</p>
+    <p>Nossa equipe acompanha diariamente os editais publicados no PNCP, Compras.gov, BBMNET e portais municipais, identificando as melhores oportunidades para empresas de construção civil, reforma e engenharia.</p>
+    <p>Com rigor técnico e agilidade, assessoramos desde a análise do edital até a assinatura do contrato.</p>
+  </div>
+  <div class="sobre-destaque">
+    <span class="num">+500</span>
+    <span class="label">editais analisados</span>
+    <hr />
+    <span class="num">MG</span>
+    <span class="label">cobertura em todo o estado</span>
+    <hr />
+    <span class="num">OAB</span>
+    <span class="label">escritório regularmente inscrito</span>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="contato" id="contato">
+  <h2>Fale com nossos especialistas</h2>
+  <p class="subtitulo">Tire suas dúvidas sobre editais ou solicite uma consultoria</p>
+  <div class="contato-grid">
+    <div>
+      <form id="form-contato" onsubmit="enviarFormulario(event)">
+        <div class="form-grupo">
+          <label>Nome</label>
+          <input type="text" name="nome" required placeholder="Seu nome completo" />
+        </div>
+        <div class="form-grupo">
+          <label>E-mail</label>
+          <input type="email" name="email" required placeholder="seu@email.com" />
+        </div>
+        <div class="form-grupo">
+          <label>Telefone</label>
+          <input type="tel" name="telefone" placeholder="(31) 99999-9999" />
+        </div>
+        <div class="form-grupo">
+          <label>Mensagem</label>
+          <textarea name="mensagem" required placeholder="Descreva sua necessidade ou o edital de interesse..."></textarea>
+        </div>
+        <button type="submit" class="btn-form">Enviar Mensagem</button>
+        <div class="msg-sucesso" id="msg-sucesso">Mensagem enviada! Retornaremos em breve.</div>
+      </form>
+    </div>
+    <div class="contato-info">
+      <div class="info-item">
+        <span class="ico">📧</span>
+        <div>
+          <strong>E-mail</strong>
+          <span>artur.lima@llgadvogados.com</span>
+        </div>
+      </div>
+      <div class="info-item">
+        <span class="ico">📍</span>
+        <div>
+          <strong>Localização</strong>
+          <span>Belo Horizonte, MG</span>
+        </div>
+      </div>
+      <div class="info-item">
+        <span class="ico">⚖️</span>
+        <div>
+          <strong>OAB/MG</strong>
+          <span>Escritório regularmente inscrito</span>
+        </div>
+      </div>
+      <a class="btn-whatsapp" href="https://wa.me/5531999429611?text=Olá%2C%20gostaria%20de%20uma%20consultoria%20sobre%20licitações." target="_blank">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.85L0 24l6.334-1.51A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.375l-.36-.213-3.76.897.942-3.667-.234-.374A9.817 9.817 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+        Falar no WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Flávio Lima Advogados Associados</strong> &nbsp;|&nbsp; OAB/MG &nbsp;|&nbsp; Belo Horizonte, MG &nbsp;|&nbsp; <a href="mailto:artur.lima@llgadvogados.com">artur.lima@llgadvogados.com</a></p>
+</footer>
+
+<script>
+function enviarFormulario(e) {
+  e.preventDefault();
+  const form = document.getElementById('form-contato');
+  const dados = new FormData(form);
+  const nome = dados.get('nome');
+  const email = dados.get('email');
+  const mensagem = dados.get('mensagem');
+  const texto = encodeURIComponent(`Olá, meu nome é ${nome} (${email}).\n\n${mensagem}`);
+  window.open(`https://wa.me/5531999429611?text=${texto}`, '_blank');
+  document.getElementById('msg-sucesso').style.display = 'block';
+  form.reset();
+}
+</script>
+
+</body>
+</html>
