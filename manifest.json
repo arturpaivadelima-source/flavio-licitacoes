@@ -1,0 +1,39 @@
+{
+  "name": "Flávio Lima — Licitações MG",
+  "short_name": "Licitações MG",
+  "description": "Editais abertos de obras e engenharia em Minas Gerais",
+  "start_url": "/flavio-licitacoes/licitacoes.html",
+  "scope": "/flavio-licitacoes/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1d3461",
+  "theme_color": "#1d3461",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "https://static.wixstatic.com/media/0e38b4_25950fa63a214ece99b1c33430a62aa0~mv2.png/v1/fill/w_192,h_192,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/0e38b4_25950fa63a214ece99b1c33430a62aa0~mv2.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://static.wixstatic.com/media/0e38b4_25950fa63a214ece99b1c33430a62aa0~mv2.png/v1/fill/w_512,h_512,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/0e38b4_25950fa63a214ece99b1c33430a62aa0~mv2.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ver Editais",
+      "url": "/flavio-licitacoes/licitacoes.html",
+      "description": "Editais abertos agora"
+    },
+    {
+      "name": "Falar com Advogado",
+      "url": "https://wa.me/5531999429611",
+      "description": "WhatsApp direto"
+    }
+  ],
+  "categories": ["business", "finance", "productivity"]
+}
