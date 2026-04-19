@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editais Abertos — Flávio Lima Advogados</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Variáveis do site ───────────────────────────────────────── */
+    :root {
+      --navy:      #1d3461;   /* azul navy exato do nav */
+      --navy-dark: #152748;   /* hover / sombra */
+      --green:     #5a8a6d;   /* verde-musgo do botão Solicitar análise */
+      --green-dark:#4a7560;
+      --black:     #1a1a1a;   /* footer */
+      --white:     #ffffff;
+      --gray-bg:   #f6f6f6;   /* fundo claro das seções */
+      --gray-line: #e0e0e0;
+      --text:      #2c2c2c;
+      --text-light:#666666;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Raleway', 'Segoe UI', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       HEADER — fundo branco, logo real, nav navy igual ao site
+       ══════════════════════════════════════════════════════════════ */
+    .site-header {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-line);
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .site-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .site-logo img {
+      height: 52px;
+      width: auto;
+    }
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .logo-text .firm-name {
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+    .logo-text .firm-sub {
+      font-size: .65rem;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+    .header-cta {
+      background: var(--green);
+      color: var(--white);
+      border: none;
+      border-radius: 50px;
+      padding: 9px 22px;
+      font-family: 'Raleway', sans-serif;
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: background .2s;
+    }
+    .header-cta:hover { background: var(--green-dark); }
+
+    /* ══════════════════════════════════════════════════════════════
+       HERO / TÍTULO DA PÁGINA — estilo seção interna do site
+       ══════════════════════════════════════════════════════════════ */
+    .page-hero {
+      background: var(--navy);
+      color: var(--white);
+      padding: 36px 32px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://static.wixstatic.com/media/0e38b4_bf6ed59bd3604e0593699c03e9ae4dc8~mv2.jpg/v1/fill/w_1903,h_661,al_c,q_85,usm_0.33_1.00_0.00,enc_avif,quality_auto/0e38b4_bf6ed59bd3604e0593699c03e9ae4dc8~mv2.jpg') center/cover no-repeat;
+      opacity: .12;
+    }
+    .page-hero-inner { position: relative; z-index: 1; }
+    .page-hero-tag {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+    .page-hero h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .page-hero p {
+      font-size: .84rem;
+      color: rgba(255,255,255,.72);
+      max-width: 580px;
+    }
+    .badge-pncp {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      color: rgba(255,255,255,.85);
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .8px;
+      padding: 5px 12px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       BARRA DE FILTROS — mesmo estilo da nav do site
+       ══════════════════════════════════════════════════════════════ */
+    .filters-bar {
+      background: var(--white);
+      border-bottom: 2px solid var(--gray-line);
+      padding: 0 32px;
+      display: flex;
+      align-items: stretch;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+    .filter-tab {
+      padding: 14px 20px;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      cursor: pointer;
+      transition: all .2s;
+      white-space: nowrap;
+    }
+    .filter-tab:hover { color: var(--navy); }
+    .filter-tab.active {
+      color: var(--navy);
+      border-bottom-color: var(--navy);
+      font-weight: 800;
+    }
+    .filter-sep {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 8px 0;
+      gap: 8px;
+    }
+    .filter-sep select {
+      border: 1px solid var(--gray-line);
+      border-radius: 4px;
+      padding: 6px 10px;
+      font-family: 'Raleway', sans-serif;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .5px;
+      color: var(--navy);
+      background: var(--white);
+      cursor: pointer;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       STATUS BAR
+       ══════════════════════════════════════════════════════════════ */
+    .status-bar {
+      padding: 10px 32px;
+      background: var(--gray-bg);
+      border-bottom: 1px solid var(--gray-line);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .spinner {
+      width: 13px; height: 13px;
+      border: 2px solid var(--gray-line);
+      border-top-color: var(--navy);
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      display: none;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ══════════════════════════════════════════════════════════════
+       GRID DE CARDS
+       ══════════════════════════════════════════════════════════════ */
+    .grid {
+      padding: 28px 32px 32px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 20px;
+      background: var(--gray-bg);
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       CARD — estilo cards do site (branco, borda, uppercase)
+       ══════════════════════════════════════════════════════════════ */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--gray-line);
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow .2s, transform .15s;
+    }
+    .card:hover {
+      box-shadow: 0 6px 24px rgba(29,52,97,.12);
+      transform: translateY(-2px);
+    }
+
+    .card-top {
+      padding: 20px 20px 14px;
+      border-bottom: 1px solid var(--gray-line);
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .modality-tag {
+      font-size: .62rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border: 1px solid;
+    }
+    .mod-pregao    { color: #1d3461; border-color: #1d3461; }
+    .mod-concorr   { color: #5a3a8a; border-color: #5a3a8a; }
+    .mod-dispensa  { color: #b85c00; border-color: #b85c00; }
+    .mod-inexig    { color: #9a1b1b; border-color: #9a1b1b; }
+    .mod-outros    { color: #2e6b3e; border-color: #2e6b3e; }
+
+    .urgente-tag {
+      font-size: .62rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #b85c00;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card-title {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.45;
+    }
+
+    .card-body {
+      padding: 14px 20px;
+      flex: 1;
+    }
+    .info-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 7px 0;
+      border-bottom: 1px solid #f0f0f0;
+      gap: 8px;
+    }
+    .info-line:last-of-type { border-bottom: none; }
+    .info-label {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      flex-shrink: 0;
+    }
+    .info-value {
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--navy);
+      text-align: right;
+    }
+    .info-value.valor-grande {
+      font-size: .95rem;
+      font-weight: 800;
+    }
+
+    /* Alerta jurídico */
+    .alerta-jur {
+      margin-top: 12px;
+      border-top: 2px solid var(--navy);
+      padding-top: 12px;
+    }
+    .alerta-jur-label {
+      font-size: .62rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 5px;
+    }
+    .alerta-jur-text {
+      font-size: .76rem;
+      color: var(--text-light);
+      line-height: 1.55;
+    }
+
+    /* Botões do card — estilo exato dos botões LICITAÇÕES > do site */
+    .card-footer {
+      display: flex;
+      gap: 0;
+      border-top: 1px solid var(--gray-line);
+    }
+    .btn-edital {
+      flex: 1;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      padding: 12px 16px;
+      font-family: 'Raleway', sans-serif;
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background .2s;
+    }
+    .btn-edital:hover { background: var(--navy-dark); }
+    .btn-interesse {
+      background: var(--white);
+      color: var(--navy);
+      border: none;
+      border-left: 1px solid var(--gray-line);
+      padding: 12px 16px;
+      font-family: 'Raleway', sans-serif;
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all .2s;
+      white-space: nowrap;
+    }
+    .btn-interesse:hover { background: var(--navy); color: var(--white); }
+
+    /* ══════════════════════════════════════════════════════════════
+       SEM RESULTADOS
+       ══════════════════════════════════════════════════════════════ */
+    .sem-resultado {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-light);
+    }
+    .sem-resultado p { margin-top: 10px; font-size: .82rem; }
+
+    /* ══════════════════════════════════════════════════════════════
+       SEÇÃO FORMULÁRIO — fundo navy igual ao footer/seções do site
+       ══════════════════════════════════════════════════════════════ */
+    .form-section {
+      background: var(--navy);
+      padding: 48px 32px;
+    }
+    .form-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .form-tag {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+    .form-section h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .form-section > .form-inner > p {
+      font-size: .83rem;
+      color: rgba(255,255,255,.6);
+      margin-bottom: 28px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .form-grid .full { grid-column: 1 / -1; }
+
+    .form-section label {
+      display: block;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 6px;
+    }
+    .form-section input,
+    .form-section select {
+      width: 100%;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.15);
+      color: var(--white);
+      font-family: 'Raleway', sans-serif;
+      font-size: .83rem;
+      padding: 11px 14px;
+      border-radius: 0;
+      transition: border-color .2s;
+    }
+    .form-section input::placeholder { color: rgba(255,255,255,.3); }
+    .form-section input:focus,
+    .form-section select:focus {
+      outline: none;
+      border-color: var(--green);
+    }
+    .form-section select option { background: var(--navy); }
+
+    .check-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+      font-size: .76rem;
+      color: rgba(255,255,255,.7);
+    }
+    .check-item input[type=checkbox] {
+      width: 15px; height: 15px;
+      accent-color: var(--green);
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--green);
+      color: var(--white);
+      border: none;
+      padding: 15px;
+      font-family: 'Raleway', sans-serif;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .btn-submit:hover { background: var(--green-dark); }
+
+    .form-ok {
+      display: none;
+      text-align: center;
+      padding: 32px;
+      color: var(--white);
+    }
+    .form-ok .ok-icon {
+      font-size: 2.5rem;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+    .form-ok strong { display: block; font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; }
+    .form-ok p { margin-top: 6px; font-size: .82rem; color: rgba(255,255,255,.6); }
+
+    /* ══════════════════════════════════════════════════════════════
+       FOOTER — idêntico ao do site
+       ══════════════════════════════════════════════════════════════ */
+    .site-footer {
+      background: var(--black);
+      color: rgba(255,255,255,.45);
+      padding: 18px 32px;
+      font-size: .7rem;
+      letter-spacing: .5px;
+      text-align: center;
+    }
+    .site-footer a { color: rgba(255,255,255,.6); text-decoration: none; }
+
+    /* ══════════════════════════════════════════════════════════════
+       MODAL INTERESSE
+       ══════════════════════════════════════════════════════════════ */
+    .modal-bg {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-box {
+      background: var(--white);
+      max-width: 420px;
+      width: 90%;
+      padding: 32px;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 14px; right: 16px;
+      border: none; background: none;
+      font-size: 1.2rem; cursor: pointer;
+      color: var(--text-light);
+    }
+    .modal-tag {
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+    .modal-box h3 {
+      font-size: .95rem;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .modal-box p {
+      font-size: .78rem;
+      color: var(--text-light);
+      margin-bottom: 18px;
+    }
+    .modal-box input {
+      width: 100%;
+      border: 1px solid var(--gray-line);
+      padding: 10px 12px;
+      font-family: 'Raleway', sans-serif;
+      font-size: .82rem;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    .modal-box input:focus { outline: none; border-color: var(--navy); }
+    .modal-btn {
+      width: 100%;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      padding: 13px;
+      font-family: 'Raleway', sans-serif;
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .modal-btn:hover { background: var(--navy-dark); }
+    .modal-ok {
+      display: none;
+      text-align: center;
+      color: var(--green);
+      font-size: .82rem;
+      font-weight: 700;
+      margin-top: 12px;
+      letter-spacing: .5px;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       RESPONSIVO
+       ══════════════════════════════════════════════════════════════ */
+    @media (max-width: 580px) {
+      .site-header, .page-hero, .filters-bar,
+      .status-bar, .grid, .form-section, .site-footer {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+      .form-grid { grid-template-columns: 1fr; }
+      .page-hero h1 { font-size: 1.2rem; }
+      .filters-bar { overflow-x: auto; flex-wrap: nowrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     HEADER — branco com logo real
+     ══════════════════════════════════════════════ -->
+<header class="site-header">
+  <a class="site-logo" href="https://www.flaviolimaadvogados.com" target="_blank">
+    <img
+      src="https://static.wixstatic.com/media/0e38b4_25950fa63a214ece99b1c33430a62aa0~mv2.png/v1/fill/w_115,h_73,al_c,q_85,usm_0.33_1.00_0.00,enc_avif,quality_auto/0e38b4_25950fa63a214ece99b1c33430a62aa0~mv2.png"
+      alt="Flávio Lima Advogados"
+    />
+    <div class="logo-text">
+      <span class="firm-name">Flávio Lima</span>
+      <span class="firm-sub">Advogados Associados</span>
+    </div>
+  </a>
+  <a class="header-cta" href="https://wa.me/5531999429611" target="_blank">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.524 5.845L0 24l6.335-1.498A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.651-.51-5.17-1.399l-.371-.22-3.762.889.928-3.649-.242-.384A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    Solicitar análise
+  </a>
+</header>
+
+<!-- ══════════════════════════════════════════════
+     HERO DA PÁGINA
+     ══════════════════════════════════════════════ -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-tag">Direito da Construção &amp; Licitações</div>
+    <h1>Oportunidades para Construtoras e Empresas de Engenharia em MG</h1>
+    <p>Contratos públicos abertos indicados para empresas de obras, reforma e engenharia em Minas Gerais — publicados no PNCP com análise jurídica prévia. Identifique as melhores oportunidades e entre em contato com nossos especialistas.</p>
+    <span class="badge-pncp">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Atualizado automaticamente · Fonte: PNCP · gov.br
+    </span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     FILTROS — abas estilo nav do site
+     ══════════════════════════════════════════════ -->
+<nav class="filters-bar">
+  <button class="filter-tab active" data-setor="todos" onclick="setSetor(this)">Todos</button>
+  <button class="filter-tab" data-setor="obra"      onclick="setSetor(this)">Obras / Construção</button>
+  <button class="filter-tab" data-setor="reforma"   onclick="setSetor(this)">Reforma / Manutenção</button>
+  <button class="filter-tab" data-setor="locacao"   onclick="setSetor(this)">Locação de Imóvel</button>
+  <button class="filter-tab" data-setor="engenharia" onclick="setSetor(this)">Engenharia</button>
+  <div class="filter-sep">
+    <select id="filtroModalidade" onchange="aplicarFiltros()">
+      <option value="todos">Todas as modalidades</option>
+      <option value="6">Pregão Eletrônico</option>
+      <option value="4">Concorrência Eletrônica</option>
+      <option value="5">Concorrência Presencial</option>
+
+      <option value="9">Inexigibilidade</option>
+    </select>
+  </div>
+</nav>
+
+<!-- STATUS -->
+<div class="status-bar">
+  <div class="spinner" id="spinner"></div>
+  <span id="statusMsg">Carregando licitações abertas…</span>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     GRID DE CARDS
+     ══════════════════════════════════════════════ -->
+<main class="grid" id="grid"></main>
+
+<!-- ══════════════════════════════════════════════
+     FORMULÁRIO — fundo navy, verde CTA
+     ══════════════════════════════════════════════ -->
+<section class="form-section">
+  <div class="form-inner">
+    <div class="form-tag">Alertas de Licitação</div>
+    <h2>Receba oportunidades no seu e-mail</h2>
+    <p>Cadastre-se e nossa equipe enviará semanalmente as licitações mais relevantes para o seu negócio, com análise jurídica prévia e orientação sobre participação.</p>
+
+    <form id="formCadastro">
+      <div class="form-grid">
+        <div>
+          <label>Nome completo *</label>
+          <input type="text" id="f_nome" placeholder="João da Silva" required />
+        </div>
+        <div>
+          <label>Empresa / Razão Social</label>
+          <input type="text" id="f_empresa" placeholder="Construtora Exemplo Ltda." />
+        </div>
+        <div>
+          <label>E-mail *</label>
+          <input type="email" id="f_email" placeholder="joao@empresa.com.br" required />
+        </div>
+        <div>
+          <label>WhatsApp</label>
+          <input type="tel" id="f_whatsapp" placeholder="(31) 99999-9999" />
+        </div>
+        <div>
+          <label>Área de interesse *</label>
+          <select id="f_area">
+            <option value="">Selecione…</option>
+            <option>Obras e Construção Civil</option>
+            <option>Reforma e Manutenção</option>
+            <option>Locação de Imóveis</option>
+            <option>Serviços de Engenharia</option>
+            <option>Pavimentação / Infraestrutura</option>
+            <option>Instalações Elétricas / Hidráulicas</option>
+            <option>Todas as áreas</option>
+          </select>
+        </div>
+        <div>
+          <label>Porte da empresa</label>
+          <select id="f_porte">
+            <option value="">Selecione…</option>
+            <option>MEI</option>
+            <option>ME / EPP</option>
+            <option>Médio porte</option>
+            <option>Grande porte</option>
+          </select>
+        </div>
+        <div class="full">
+          <label>Regiões de interesse</label>
+          <div class="check-grid">
+            <label class="check-item"><input type="checkbox" value="BH/RMBH" checked> BH / RMBH</label>
+            <label class="check-item"><input type="checkbox" value="Interior MG"> Interior MG</label>
+            <label class="check-item"><input type="checkbox" value="Todo MG"> Todo MG</label>
+            <label class="check-item"><input type="checkbox" value="Federal"> Federal</label>
+          </div>
+        </div>
+        <div class="full">
+          <button type="submit" class="btn-submit">Quero receber alertas de licitação &rsaquo;</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="form-ok" id="formOk">
+      <div class="ok-icon">✓</div>
+      <strong>Cadastro realizado!</strong>
+      <p>Nossa equipe entrará em contato com as oportunidades mais adequadas ao seu perfil.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════════════ -->
+<footer class="site-footer">
+  © 2021 Flávio Lima Advogados Associados · OAB/MG ·
+  Dados: <a href="https://pncp.gov.br" target="_blank">Portal Nacional de Contratações Públicas (PNCP)</a>
+</footer>
+
+<!-- ══════════════════════════════════════════════
+     MODAL INTERESSE
+     ══════════════════════════════════════════════ -->
+<div class="modal-bg" id="modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="fecharModal()">✕</button>
+    <div class="modal-tag">Tenho Interesse</div>
+    <h3>Participar desta licitação</h3>
+    <p>Informe seus dados e nossa equipe avaliará a documentação e estratégia de participação.</p>
+    <input type="text"  id="mi_nome"  placeholder="Seu nome *" />
+    <input type="email" id="mi_email" placeholder="Seu e-mail *" />
+    <input type="tel"   id="mi_tel"   placeholder="WhatsApp" />
+    <button class="modal-btn" onclick="enviarInteresse()">Enviar interesse &rsaquo;</button>
+    <div class="modal-ok" id="miOk">✓ Interesse registrado! Em breve entraremos em contato.</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     JAVASCRIPT
+     ══════════════════════════════════════════════ -->
+<script>
+const API_BASE   = 'https://pncp.gov.br/api/consulta/v1';
+const EMAIL_DEST = 'artur.lima@llgadvogados.com'; // e-mail do escritório
+
+// Palavras-chave por setor
+const KW = {
+  obra:      ['obra','constru','edifica','pavimenta','terraplanagem','demoli','fundaç','fundacao','estrutur','alvenaria'],
+  reforma:   ['reforma','manuten','conserva','restaur','pintura','revesti','amplia','adequa','retrofit'],
+  locacao:   ['locaç','locacao','aluguel','imóvel','imovel','locação de'],
+  engenharia:['engenharia','projeto','arquitetura','topografia','sondagem','levantamento','instalação elétrica','instalação hidráulica','drenagem','esgoto','saneamento','elétric','hidráulic']
+};
+const KW_ALL = Object.values(KW).flat();
+
+let todosCards  = [];
+let setorAtivo  = 'todos';
+let licitAtual  = '';
+
+// ── Alertas jurídicos por modalidade ──────────────────────────────
+const ALERTAS = {
+  6: 'Pregão é vedado para obras e serviços de engenharia de grande vulto (art. 6º, XVII, da Lei 14.133/21). Verificar enquadramento da modalidade e fundamento do edital.',
+  7: 'Pregão presencial para obras exige análise cuidadosa. Verificar se a modalidade é adequada ao tipo de serviço contratado.',
+  4: 'Modalidade padrão para grandes obras. Verificar exigências de habilitação técnica: CAT, ART/RRT e qualificação econômico-financeira.',
+  5: 'Atenção ao prazo mínimo de divulgação do edital (25 dias úteis). Verificar exigências de qualificação técnica e garantias.',
+  8: 'Verificar se o valor está nos limites legais (art. 75, Lei 14.133/21: até R$ 100k para obras). Atenção ao risco de fracionamento indevido.',
+  9: 'Exige comprovação de exclusividade ou natureza singular. Verificar se a fundamentação está adequada — possível impugnação.',
+  3: 'Adequado para projetos. Verificar regulamento, critérios de julgamento e direito autoral sobre o projeto vencedor.',
+};
+function getAlerta(id) {
+  return ALERTAS[id] || 'Verifique os requisitos de habilitação, prazos e condições de participação no edital.';
+}
+
+// ── Utilitários ───────────────────────────────────────────────────
+function fmtValor(v) {
+  if (!v || v === 0) return 'Não informado';
+  return 'R$ ' + Number(v).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+function fmtData(d) {
+  if (!d) return '—';
+  const dt = new Date(d);
+  return isNaN(dt) ? d : dt.toLocaleDateString('pt-BR');
+}
+function diasRestantes(d) {
+  if (!d) return null;
+  const dt = new Date(d);
+  if (isNaN(dt)) return null;
+  const hoje = new Date(); hoje.setHours(0,0,0,0);
+  return Math.ceil((dt - hoje) / 86400000);
+}
+function getModClass(id) {
+  if ([6,7].includes(id)) return 'mod-pregao';
+  if ([4,5].includes(id)) return 'mod-concorr';
+  if (id === 8)           return 'mod-dispensa';
+  if (id === 9)           return 'mod-inexig';
+  return 'mod-outros';
+}
+function setorLicitacao(obj) {
+  const o = (obj||'').toLowerCase();
+  if (KW.locacao.some(k=>o.includes(k)))    return 'locacao';
+  if (KW.reforma.some(k=>o.includes(k)))    return 'reforma';
+  if (KW.obra.some(k=>o.includes(k)))       return 'obra';
+  if (KW.engenharia.some(k=>o.includes(k))) return 'engenharia';
+  return 'outros';
+}
+function isConstrucao(obj) {
+  const o = (obj||'').toLowerCase();
+  return KW_ALL.some(k=>o.includes(k));
+}
+
+// ── Render ────────────────────────────────────────────────────────
+function renderCards(lista) {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  if (!lista.length) {
+    grid.innerHTML = `<div class="sem-resultado">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <p>Nenhuma licitação encontrada com os filtros selecionados.</p>
+    </div>`;
+    return;
+  }
+  lista.forEach(item => {
+    const dias    = diasRestantes(item.dataEncerramentoProposta || item.dataAberturaProposta);
+    const urgente = dias !== null && dias <= 7 && dias >= 0;
+    // campos reais da API PNCP
+    const cnpj    = item.orgaoEntidade?.cnpj || '';
+    const ano     = item.anoCompra || '';
+    const seq     = item.sequencialCompra || '';
+    const orgao   = item.orgaoEntidade?.razaoSocial || '—';
+    const muni    = item.unidadeOrgao?.municipioNome || '';
+    const uf      = item.unidadeOrgao?.ufSigla || 'MG';
+    const pncpUrl = `https://pncp.gov.br/app/editais/${cnpj}/${ano}/${seq}`;
+    const obj     = JSON.stringify(item.objetoCompra || '');
+
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="modality-tag ${getModClass(item.modalidadeId)}">${item.modalidadeNome || 'Modalidade'}</span>
+          ${urgente ? `<span class="urgente-tag">⏱ ${dias}d restante${dias!==1?'s':''}</span>` : ''}
+        </div>
+        <div class="card-title">${item.objetoCompra || 'Objeto não informado'}</div>
+      </div>
+      <div class="card-body">
+        <div class="info-line">
+          <span class="info-label">Órgão</span>
+          <span class="info-value">${orgao}</span>
+        </div>
+        <div class="info-line">
+          <span class="info-label">Município / UF</span>
+          <span class="info-value">${muni ? muni + ' / ' + uf : uf}</span>
+        </div>
+        <div class="info-line">
+          <span class="info-label">Valor estimado</span>
+          <span class="info-value valor-grande">${fmtValor(item.valorTotalEstimado)}</span>
+        </div>
+        <div class="info-line">
+          <span class="info-label">Encerramento</span>
+          <span class="info-value">${fmtData(item.dataEncerramentoProposta || item.dataAberturaProposta)}</span>
+        </div>
+        <div class="alerta-jur">
+          <div class="alerta-jur-label">⚖ Atenção jurídica</div>
+          <div class="alerta-jur-text">${getAlerta(item.modalidadeId)}</div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-edital" href="${pncpUrl}" target="_blank">Ver edital &rsaquo;</a>
+        <button class="btn-interesse" onclick='abrirModal(${obj})'>Tenho interesse</button>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+// ── Busca API ─────────────────────────────────────────────────────
+const MODALIDADES = [1,2,3,4,5,6,7,9]; // excluindo dispensa (8)
+function dateStr(d) { return d.toISOString().slice(0,10).replace(/-/g,''); }
+
+async function buscarPagina(modalidade, pagina, dataInicial, dataFinal) {
+  const params = new URLSearchParams({
+    dataInicial, dataFinal, uf: 'MG',
+    pagina, tamanhoPagina: 50,
+    codigoModalidadeContratacao: modalidade,
+  });
+  const r = await fetch(`${API_BASE}/contratacoes/publicacao?${params}`,
+    { headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(10000) });
+  if (!r.ok) return [];
+  const json = await r.json();
+  return Array.isArray(json) ? json : (json.data || json.content || []);
+}
+
+async function buscarLicitacoes() {
+  document.getElementById('spinner').style.display = 'block';
+  document.getElementById('statusMsg').textContent = 'Consultando PNCP em múltiplas modalidades…';
+
+  const hoje   = new Date();
+  const inicio = new Date(hoje); inicio.setDate(inicio.getDate() - 30); // 30 dias — editais ainda abertos
+  const di = dateStr(inicio), df = dateStr(hoje);
+
+  let dados = [];
+  try {
+    // Busca página 1 de todas as modalidades em paralelo
+    const pag1 = await Promise.allSettled(
+      MODALIDADES.map(m => buscarPagina(m, 1, di, df))
+    );
+    let brutos = pag1.flatMap(r => r.status === 'fulfilled' ? r.value : []);
+
+    // Busca páginas 2 e 3 das modalidades que retornaram 500 (podem ter mais)
+    const pagExtras = await Promise.allSettled(
+      MODALIDADES.flatMap(m => [2, 3].map(p => buscarPagina(m, p, di, df)))
+    );
+    brutos = brutos.concat(pagExtras.flatMap(r => r.status === 'fulfilled' ? r.value : []));
+
+    // Deduplicar por numeroControlePNCP
+    const vistos = new Set();
+    const unicos = brutos.filter(i => {
+      const k = i.numeroControlePNCP || (i.orgaoEntidade?.cnpj + i.anoCompra + i.sequencialCompra);
+      if (vistos.has(k)) return false;
+      vistos.add(k); return true;
+    });
+
+    // Filtrar por palavras-chave de construção/obra e encerramento futuro
+    const agora = new Date();
+    let filtrados = unicos
+      .filter(i => i.modalidadeId !== 8) // excluir dispensa de licitação
+      .filter(i => isConstrucao(i.objetoCompra))
+      .filter(i => {
+        const enc = i.dataEncerramentoProposta || i.dataAberturaProposta;
+        return !enc || new Date(enc) >= agora;
+      });
+
+    // Fallback: se poucos resultados, pega os de maior valor estimado
+    if (filtrados.length < 10) {
+      filtrados = unicos
+        .filter(i => i.modalidadeId !== 8)
+        .filter(i => isConstrucao(i.objetoCompra))
+        .sort((a, b) => (b.valorTotalEstimado || 0) - (a.valorTotalEstimado || 0))
+        .slice(0, 50);
+      document.getElementById('statusMsg').textContent =
+        `${filtrados.length} oportunidades de maior valor para construtoras em MG`;
+    } else {
+      document.getElementById('statusMsg').textContent =
+        `${filtrados.length} oportunidade${filtrados.length!==1?'s':''} abertas para construtoras e empresas de engenharia em MG`;
+    }
+    dados = filtrados;
+  } catch(e) {
+    console.warn('API indisponível, usando dados de exemplo.', e);
+    dados = exemploData();
+    document.getElementById('statusMsg').textContent = `Dados de exemplo (${dados.length} registros)`;
+  }
+
+  todosCards = dados;
+  document.getElementById('spinner').style.display = 'none';
+  aplicarFiltros();
+}
+
+// ── Filtros ───────────────────────────────────────────────────────
+function setSetor(btn) {
+  document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  setorAtivo = btn.dataset.setor;
+  aplicarFiltros();
+}
+
+function aplicarFiltros() {
+  const modal = document.getElementById('filtroModalidade').value;
+  let res = todosCards;
+  if (setorAtivo !== 'todos') res = res.filter(i => setorLicitacao(i.objetoCompra) === setorAtivo);
+  if (modal !== 'todos')      res = res.filter(i => String(i.modalidadeId) === modal);
+  res.sort((a,b) => {
+    const da = diasRestantes(a.dataEncerramentoProposta) ?? 999;
+    const db = diasRestantes(b.dataEncerramentoProposta) ?? 999;
+    return da !== db ? da - db : (b.valorTotalEstimado||0) - (a.valorTotalEstimado||0);
+  });
+  renderCards(res);
+}
+
+// ── Modal interesse ───────────────────────────────────────────────
+function abrirModal(obj) {
+  licitAtual = obj;
+  document.getElementById('miOk').style.display = 'none';
+  document.getElementById('modal').style.display = 'flex';
+}
+function fecharModal() { document.getElementById('modal').style.display = 'none'; }
+
+async function enviarInteresse() {
+  const nome  = document.getElementById('mi_nome').value.trim();
+  const email = document.getElementById('mi_email').value.trim();
+  const tel   = document.getElementById('mi_tel').value.trim();
+  if (!nome || !email) { alert('Preencha nome e e-mail.'); return; }
+  try {
+    await fetch(`https://formsubmit.co/ajax/${EMAIL_DEST}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ name: nome, email, phone: tel, licitacao: licitAtual,
+        _subject: `[Interesse em Licitação] ${licitAtual.slice(0,60)}` })
+    });
+  } catch(_) {}
+  document.getElementById('miOk').style.display = 'block';
+  setTimeout(fecharModal, 2500);
+}
+
+// ── Formulário principal ──────────────────────────────────────────
+document.getElementById('formCadastro').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const regioes = [...document.querySelectorAll('.check-item input:checked')].map(el=>el.value).join(', ');
+  try {
+    await fetch(`https://formsubmit.co/ajax/${EMAIL_DEST}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        name:     document.getElementById('f_nome').value,
+        email:    document.getElementById('f_email').value,
+        empresa:  document.getElementById('f_empresa').value,
+        whatsapp: document.getElementById('f_whatsapp').value,
+        area:     document.getElementById('f_area').value,
+        porte:    document.getElementById('f_porte').value,
+        regioes,
+        _subject: `[Alerta Licitação] Novo cadastro — ${document.getElementById('f_nome').value}`
+      })
+    });
+  } catch(_) {}
+  document.getElementById('formCadastro').style.display = 'none';
+  document.getElementById('formOk').style.display = 'block';
+});
+
+// ── Dados de exemplo (fallback) ───────────────────────────────────
+function exemploData() {
+  const d = (n) => { const x=new Date(); x.setDate(x.getDate()+n); return x.toISOString(); };
+  return [
+    { objetoCompra:'Contratação de empresa para execução de obras de reforma e ampliação da UBS Centro, com instalações elétricas e hidráulicas',
+      modalidadeId:4, modalidadeNome:'Concorrência Eletrônica', orgaoNome:'Prefeitura Municipal de Belo Horizonte',
+      municipioNome:'Belo Horizonte', uf:'MG', valorTotalEstimado:1850000, dataEncerramentoProposta:d(22), cnpj:'18715383000110', ano:2026, sequencial:42 },
+    { objetoCompra:'Pregão eletrônico para locação de imóvel destinado à instalação do CRAS Venda Nova — área mínima 300m²',
+      modalidadeId:6, modalidadeNome:'Pregão Eletrônico', orgaoNome:'Prefeitura Municipal de Belo Horizonte',
+      municipioNome:'Belo Horizonte', uf:'MG', valorTotalEstimado:84000, dataEncerramentoProposta:d(5), cnpj:'18715383000110', ano:2026, sequencial:43 },
+    { objetoCompra:'Serviços de manutenção predial preventiva e corretiva nas unidades da Secretaria de Educação — Contrato Global',
+      modalidadeId:6, modalidadeNome:'Pregão Eletrônico', orgaoNome:'Secretaria de Estado de Educação de MG',
+      municipioNome:'Belo Horizonte', uf:'MG', valorTotalEstimado:3200000, dataEncerramentoProposta:d(40), cnpj:'18715383000110', ano:2026, sequencial:44 },
+    { objetoCompra:'Dispensa — serviços de pintura e revitalização da fachada do Fórum Estadual de Contagem',
+      modalidadeId:8, modalidadeNome:'Dispensa de Licitação', orgaoNome:'TJMG — Regional Contagem',
+      municipioNome:'Contagem', uf:'MG', valorTotalEstimado:48500, dataEncerramentoProposta:d(2), cnpj:'18715383000110', ano:2026, sequencial:45 },
+    { objetoCompra:'Concorrência para construção de 120 unidades habitacionais — Programa Casa Verde e Amarela — Betim/MG',
+      modalidadeId:5, modalidadeNome:'Concorrência Presencial', orgaoNome:'Prefeitura Municipal de Betim',
+      municipioNome:'Betim', uf:'MG', valorTotalEstimado:18400000, dataEncerramentoProposta:d(45), cnpj:'18700148000154', ano:2026, sequencial:10 },
+    { objetoCompra:'Contratação de empresa para pavimentação asfáltica e obras de drenagem — Av. Brasil, Governador Valadares',
+      modalidadeId:4, modalidadeNome:'Concorrência Eletrônica', orgaoNome:'DNIT — Infraestrutura de Transportes',
+      municipioNome:'Governador Valadares', uf:'MG', valorTotalEstimado:7650000, dataEncerramentoProposta:d(30), cnpj:'04892707000100', ano:2026, sequencial:88 },
+  ];
+}
+
+// ── Init ──────────────────────────────────────────────────────────
+buscarLicitacoes();
+</script>
+</body>
+</html>
