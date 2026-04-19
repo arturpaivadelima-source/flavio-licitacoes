@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instalar App — Flávio Lima Advogados</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1d3461" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Licitações MG" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: #f5f7fa;
+      color: #222;
+      min-height: 100vh;
+    }
+
+    /* ── Nav ── */
+    nav {
+      background: #1d3461;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav a { color: #fff; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+    nav .logo { font-size: 1.1rem; font-weight: 800; }
+    nav .links { display: flex; gap: 20px; }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, #1d3461 0%, #2a4a8a 100%);
+      color: #fff;
+      text-align: center;
+      padding: 60px 24px 50px;
+    }
+    .hero .badge {
+      display: inline-block;
+      background: #5a8a6d;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .hero h1 { font-size: clamp(1.6rem, 5vw, 2.4rem); font-weight: 800; margin-bottom: 12px; }
+    .hero p { font-size: 1.05rem; opacity: .85; max-width: 480px; margin: 0 auto 28px; line-height: 1.6; }
+
+    .btn-install {
+      display: inline-block;
+      background: #5a8a6d;
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 32px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .btn-install:hover { background: #4a7a5d; }
+    #install-btn { display: none; } /* shown only when PWA prompt available */
+
+    /* ── Benefits ── */
+    .benefits {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      padding: 40px 24px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .benefit {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      flex: 1 1 160px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.07);
+    }
+    .benefit .icon { font-size: 2rem; margin-bottom: 8px; }
+    .benefit h3 { font-size: .95rem; font-weight: 700; color: #1d3461; margin-bottom: 4px; }
+    .benefit p { font-size: .82rem; color: #555; line-height: 1.4; }
+
+    /* ── Steps ── */
+    .steps-section {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+    .steps-section h2 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #1d3461;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .os-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.08);
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+    .os-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 24px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+    .os-header.android { background: #3ddc84; color: #1a3a1a; }
+    .os-header.iphone  { background: #1d3461; }
+    .os-header .os-icon { font-size: 1.6rem; }
+
+    .steps-list {
+      padding: 20px 24px;
+      list-style: none;
+    }
+    .steps-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .steps-list li:last-child { border-bottom: none; }
+    .step-num {
+      background: #1d3461;
+      color: #fff;
+      font-weight: 800;
+      font-size: .85rem;
+      min-width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .os-header.android ~ .steps-list .step-num { background: #3ddc84; color: #1a3a1a; }
+    .step-text { font-size: .95rem; line-height: 1.5; color: #333; }
+    .step-text strong { color: #1d3461; }
+    .step-text .chip {
+      display: inline-block;
+      background: #eef2ff;
+      color: #1d3461;
+      font-weight: 700;
+      font-size: .78rem;
+      padding: 2px 10px;
+      border-radius: 12px;
+      margin: 0 2px;
+    }
+
+    /* ── Link copy ── */
+    .link-box {
+      background: #fff;
+      border: 2px dashed #5a8a6d;
+      border-radius: 12px;
+      padding: 20px 24px;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .link-box p { font-size: .85rem; color: #555; margin-bottom: 8px; }
+    .link-url {
+      font-weight: 700;
+      color: #1d3461;
+      font-size: .95rem;
+      word-break: break-all;
+    }
+    .btn-copy {
+      margin-top: 12px;
+      background: #5a8a6d;
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      font-size: .9rem;
+      padding: 10px 24px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .btn-copy:hover { background: #4a7a5d; }
+
+    /* ── Footer ── */
+    footer {
+      background: #1d3461;
+      color: rgba(255,255,255,.6);
+      text-align: center;
+      padding: 20px;
+      font-size: .82rem;
+    }
+    footer a { color: #5a8a6d; text-decoration: none; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">Flávio Lima Advogados</a>
+  <div class="links">
+    <a href="licitacoes.html">Ver Editais</a>
+    <a href="index.html">Início</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="badge">App Gratuito</div>
+  <h1>Instale o App de Licitações</h1>
+  <p>Acompanhe editais abertos de obras e engenharia em MG direto na tela do seu celular — sem precisar de App Store.</p>
+  <button id="install-btn" class="btn-install">📲 Instalar Agora</button>
+</div>
+
+<!-- Benefits -->
+<div class="benefits">
+  <div class="benefit">
+    <div class="icon">📱</div>
+    <h3>Ícone na tela</h3>
+    <p>Abre igual a um app nativo, sem digitar endereço</p>
+  </div>
+  <div class="benefit">
+    <div class="icon">⚡</div>
+    <h3>Super rápido</h3>
+    <p>Carrega instantâneo com cache local</p>
+  </div>
+  <div class="benefit">
+    <div class="icon">📶</div>
+    <h3>Funciona offline</h3>
+    <p>Veja os últimos editais mesmo sem internet</p>
+  </div>
+  <div class="benefit">
+    <div class="icon">🆓</div>
+    <h3>100% gratuito</h3>
+    <p>Sem App Store, sem Play Store, sem custo</p>
+  </div>
+</div>
+
+<!-- Steps -->
+<div class="steps-section">
+
+  <div class="link-box">
+    <p>Envie este link para seus clientes instalarem:</p>
+    <div class="link-url" id="site-url">https://arturpaivadelima-source.github.io/flavio-licitacoes/instalar.html</div>
+    <button class="btn-copy" onclick="copiarLink()">📋 Copiar link</button>
+  </div>
+
+  <h2>Como instalar no celular</h2>
+
+  <!-- Android -->
+  <div class="os-card">
+    <div class="os-header android">
+      <span class="os-icon">🤖</span> Android (Chrome)
+    </div>
+    <ul class="steps-list">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-text">Abra este link no <strong>Google Chrome</strong> do celular</div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-text">Uma faixa aparece na parte de baixo da tela:<br>
+          <strong>"Adicionar Licitações MG à tela inicial"</strong> — toque nela</div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-text">Se a faixa não aparecer: toque no menu <span class="chip">⋮</span> (canto superior direito) → <strong>"Instalar app"</strong></div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-text">✅ Pronto! O ícone aparece na sua tela inicial igual a qualquer app</div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- iPhone -->
+  <div class="os-card">
+    <div class="os-header iphone">
+      <span class="os-icon">🍎</span> iPhone (Safari)
+    </div>
+    <ul class="steps-list">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-text">Abra este link no <strong>Safari</strong> <em>(não funciona no Chrome do iPhone)</em></div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-text">Toque no ícone de compartilhar <span class="chip">⎋</span> na barra inferior do Safari</div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-text">Role a lista para baixo e toque em <strong>"Adicionar à Tela de Início"</strong></div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-text">Confirme o nome e toque em <strong>"Adicionar"</strong> no canto superior direito</div>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <div class="step-text">✅ Pronto! O ícone aparece na sua tela inicial</div>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  © 2025 Flávio Lima Advogados — <a href="licitacoes.html">Ver Editais Abertos</a>
+</footer>
+
+<script>
+// Botão de instalar automático (Android Chrome)
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('install-btn').style.display = 'inline-block';
+});
+document.getElementById('install-btn').addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  const { outcome } = await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  if (outcome === 'accepted') {
+    document.getElementById('install-btn').textContent = '✅ App instalado!';
+    document.getElementById('install-btn').disabled = true;
+  }
+});
+
+// Copiar link
+function copiarLink() {
+  const url = document.getElementById('site-url').textContent;
+  navigator.clipboard.writeText(url).then(() => {
+    const btn = document.querySelector('.btn-copy');
+    btn.textContent = '✅ Link copiado!';
+    setTimeout(() => btn.textContent = '📋 Copiar link', 2000);
+  });
+}
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js');
+}
+</script>
+
+</body>
+</html>
